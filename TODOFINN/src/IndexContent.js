@@ -6,20 +6,20 @@ class IndexContent extends Component {
 
      constructor(props) {
          super(props)
-        this.onChangeUserName = this.onChangeUserName.bind(this);
+        this.onChangeUserUserName = this.onChangeUserUserName.bind(this);
         this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
         this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
          this.state = {
              sign: false,
-             name: '',
+             UserName: '',
             email: '',
             password:'',
          }
      }
-     onChangeUserName(e) {
-        this.setState({ name: e.target.value })
+     onChangeUserUserName(e) {
+        this.setState({ UserName: e.target.value })
     }
 
     onChangeUserEmail(e) {
@@ -33,7 +33,7 @@ class IndexContent extends Component {
         e.preventDefault()
 
         const userObject = {
-            name: this.state.name,
+            name: this.state.UserName,
             email: this.state.email,
             email: this.state.password
         };
@@ -44,7 +44,7 @@ class IndexContent extends Component {
             }).catch((error) => {
                 console.log(error)
             });
-        this.setState({ name: '', email: '', password:'' })
+        this.setState({ UserName: '', email: '', password:'' })
         
 
         
@@ -78,7 +78,7 @@ class IndexContent extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Add User Name</label>
-                        <input type="text" value={this.state.name} onChange={this.onChangeUserName} className="form-control" />
+                        <input type="text" value={this.state.UserName} onChange={this.onChangeUserUserName} className="form-control" />
                     </div>
                     <div className="form-group">
                         <label>Add User Email</label>
