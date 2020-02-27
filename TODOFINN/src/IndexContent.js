@@ -70,22 +70,19 @@ class IndexContent extends Component {
 
               <div class="col-md-6 col-sm-7 col-xs-12"  >
                    <div class="home-thumb">
-                        <h1 class="wow fadeInUp"  class="up" >To-Do List.  </h1>
-                        <br />
-                        <p class="wow fadeInUp">The best way improve your productivity <br/> and achieve your dreams</p>
                    <h2>Get Started and Create Your Account</h2>
                    <div className="wrapper">
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Add User Name</label>
+                        <label>Enter UserName</label>
                         <input type="text" value={this.state.UserName} onChange={this.onChangeUserUserName} className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label>Add User Email</label>
+                        <label>Enter Email</label>
                         <input type="text" value={this.state.email} onChange={this.onChangeUserEmail} className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label>Add Password</label>
+                        <label>Enter Password</label>
                         <input type="password" value={this.state.password} onChange={this.onChangeUserPassword} className="form-control" />
                     </div>
                     <div className="form-group">

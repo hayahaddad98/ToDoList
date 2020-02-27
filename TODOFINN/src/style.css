@@ -15,7 +15,8 @@ nav.navbar {
   margin: 9px 0 0;
 }
 .up{
-      margin-top: -129px;
+     
+      top:500px;
 }
 .navbar-default .navbar-nav li button {
   color: #656565;
@@ -46,7 +47,7 @@ nav.navbar {
     -webkit-align-items: center;
     -ms-flex-align: center;
      align-items: center;
-	 height: 120vh;
+	 height: 130vh;
 	position: relative;
 	
 }
@@ -58,7 +59,7 @@ nav.navbar {
   opacity: 0.9;
   position: absolute;
   width: 100%;
-  height: 120vh;
+  height: 130vh;
   top: 0;
   left: 0;
   right: 0;
@@ -70,17 +71,8 @@ nav.navbar {
 }
 
 #home .home-thumb {
-  padding-top: 32px;
-  padding-left: 32px;
-}
-#home h1{
-	padding-top: 80px;
-	font-size: 50px;
-}
-#home p {
-  color: #f0f0f0;
-  letter-spacing: 1px;
-  font-size: 20px;
+  padding-top: 30px;
+  padding-left: 30px;
 }
 
 #home .section-btn {

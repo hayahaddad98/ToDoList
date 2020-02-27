@@ -15,6 +15,7 @@ class Todolist extends Component {
       navActive: "tasks",
       color: ""
     };
+    
   }
   onOpenModaltask1 = () => {
     this.setState({ task1: true });
