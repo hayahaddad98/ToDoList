@@ -38,21 +38,26 @@ class IndexContent extends Component {
         e.preventDefault()
 
         const userObject = {
-            name: this.state.userName,
-            email: this.state.userEmail,
-            email: this.state.userPrassword,
+            userName: this.state.userName,
+            userEmail: this.state.userEmail,
+            userPassword: this.state.userPrassword,
             
             
         };
 
 
-        axios.post('http://localhost:3400/users/create', userObject),this.setState({ isSignedUp: true }))
+        axios.post('http://localhost:3400/users/create', userObject)
 
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
                 console.log(error)
             });
+            if (userObject.userName  !== ' '&& userObject.userEmail !== ''&& userObject.userPassword !== ''){
+                this.setState({ isSignedUp: true });}
+                else{
+                this.setState({ isSignedUp: false });
+            }
         this.setState({ userName: '', userEmail: '', userPassword:'' });
        
 

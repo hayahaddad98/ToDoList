@@ -22,16 +22,20 @@ class Header extends Component {
     componentDidMount() {
         axios.get('http://localhost:3400/users')
             .then(res => {
-                if (res.status === 3400) {
-                    this.setState({ isLogin: true });
+             
                     this.setState({ usersCollection: res.data });
-                  }
+                 
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
 
+     if (userObject.userName  !== ' '&& userObject.userEmail !== ''&& userObject.userPassword !== ''){
+                this.setState({ isLogin: true });}
+                else{
+                this.setState({ isLogin: false });
+            }
     dataTable() {
         return this.state.usersCollection.map((data, i) => {
             return <DataTable obj={data} key={i} />;
