@@ -7,12 +7,10 @@ class Todolist extends Component {
       tasks: [],
       doneTasks: [],
       tittle: "",
-      detail: "",
       time: "",
       act: 0,
       index: 0,
       renderTasks: 1,
-      navActive: "tasks",
       color: ""
     };
     

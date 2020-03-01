@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Redirect ,Link} from 'react-router-dom';
+import {Redirect ,Link,BrowserRouter} from 'react-router-dom';
+
 import axios from 'axios';
 
 class IndexContent extends Component {
@@ -10,12 +11,15 @@ class IndexContent extends Component {
         this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
         this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+       
 
          this.state = {
              sign: false,
              UserName: '',
             email: '',
             password:'',
+            isSignedUp: false 
+              
          }
      }
      onChangeUserUserName(e) {
@@ -35,28 +39,29 @@ class IndexContent extends Component {
         const userObject = {
             name: this.state.UserName,
             email: this.state.email,
-            email: this.state.password
+            email: this.state.password,
+            
+            
         };
 
-        axios.post('http://localhost:4000/users/create', userObject)
+        axios.post('http://localhost:4000/users/create', userObject , this.setState({ isSignedUp: true }))
             .then((res) => {
-                console.log(res.data)
+                console.log(res.data);
+               
             }).catch((error) => {
                 console.log(error)
             });
-        this.setState({ UserName: '', email: '', password:'' })
-        
+        this.setState({ UserName: '', email: '', password:'' });
+       
 
         
+        
     }
-     onOpenModal = () => {
-          this.setState({ sign: true });
-      };
-      onCloseModal = () => {
-          this.setState({ sign: false });
-      };
       render() {
           const {  sign } = this.state;
+            if (this.state.isSignedUp) {
+              return <Redirect to = {{ pathname: "/App2" }} />;
+            }
     return (<section id="home" class="main">
     <div class="overlay"></div>
    <div class="container">
@@ -86,9 +91,9 @@ class IndexContent extends Component {
                         <input type="password" value={this.state.password} onChange={this.onChangeUserPassword} className="form-control" />
                     </div>
                     <div className="form-group">
-                    <Link to="./App2">
+                    
                     <button className="wow fadeInUp section-btn btn btn-success smoothScroll" id="signup" value="Create User">SignUp</button>
-                    </Link>
+                    
                     </div>
                 </form>
                 </div>
@@ -98,7 +103,9 @@ class IndexContent extends Component {
                </div>
        </div>
      </section>
+     
 );
+
 }
 }
 
