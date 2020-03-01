@@ -32,6 +32,7 @@ class IndexContent extends Component {
 
     onChangeUseruserPassword(e) {
         this.setState({ userPassword: e.target.value })
+         
     }
     onSubmit(e) {
         e.preventDefault()
@@ -39,20 +40,16 @@ class IndexContent extends Component {
         const userObject = {
             name: this.state.userName,
             email: this.state.userEmail,
-            email: this.state.usePrassword,
+            email: this.state.userPrassword,
             
             
         };
 
 
-        axios.post('http://localhost:3400/users/create', userObject )
+        axios.post('http://localhost:3400/users/create', userObject),this.setState({ isSignedUp: true }))
 
             .then((res) => {
-                console.log(res.data);
-                if (res.status === 3400) {
-                    this.setState({ isSignedUp: true });
-                  }
-               
+                console.log(res.data)
             }).catch((error) => {
                 console.log(error)
             });
