@@ -44,11 +44,9 @@ class IndexContent extends Component {
             
         };
 
-<<<<<<< HEAD
+
         axios.post('http://localhost:3400/users/create', userObject )
-=======
-        axios.post('http://localhost:3400/users/create', userObject , this.setState({ isSignedUp: true }))
->>>>>>> 0328097e7b27bbe18bd9b7179914ad2e17982848
+
             .then((res) => {
                 console.log(res.data);
                 if (res.status === 3400) {
