@@ -44,7 +44,7 @@ class IndexContent extends Component {
             
         };
 
-        axios.post('http://localhost:4000/users/create', userObject , this.setState({ isSignedUp: true }))
+        axios.post('http://localhost:3400/users/create', userObject , this.setState({ isSignedUp: true }))
             .then((res) => {
                 console.log(res.data);
                
