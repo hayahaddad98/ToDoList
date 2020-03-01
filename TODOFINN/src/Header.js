@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Modal from 'react-responsive-modal';
 import {Redirect ,Link} from 'react-router-dom';
 import axios from 'axios';
+
 //import DataTable from './data-table';
 
 class Header extends Component {
@@ -13,14 +14,18 @@ class Header extends Component {
         this.state = {
            
             login: false,
+            isLogin: false 
 
         }
     }
   /* 
     componentDidMount() {
-        axios.get('http://localhost:4000/users')
+        axios.get('http://localhost:3400/users')
             .then(res => {
-                this.setState({ usersCollection: res.data });
+                if (res.status === 3400) {
+                    this.setState({ isLogin: true });
+                    this.setState({ usersCollection: res.data });
+                  }
             })
             .catch(function (error) {
                 console.log(error);
@@ -33,11 +38,7 @@ class Header extends Component {
         });
     }
 */
-     onSubmit = () => {
-        return  <Redirect  to="/App2" />
-        // if(userFound){
-        //     return  <Redirect  to="/posts/" />
-        }
+    
     onOpenModalLogin = () => {
         this.setState({ login: true });
     };
@@ -49,6 +50,9 @@ class Header extends Component {
 
     render() {
         const { login } = this.state;
+        if (this.state.isLogin) {
+            return <Redirect to = {{ pathname: "/App2" }} />;
+          }
         return (
 
             <>

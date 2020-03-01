@@ -7,51 +7,54 @@ class IndexContent extends Component {
 
      constructor(props) {
          super(props)
-        this.onChangeUserUserName = this.onChangeUserUserName.bind(this);
-        this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
-        this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
+        this.onChangeUseruserName = this.onChangeUseruserName.bind(this);
+        this.onChangeUseruserEmail = this.onChangeUseruserEmail.bind(this);
+        this.onChangeUseruserPassword = this.onChangeUseruserPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
        
 
          this.state = {
              sign: false,
-             UserName: '',
-            email: '',
-            password:'',
+             userName: '',
+            userEmail: '',
+            userPassword:'',
             isSignedUp: false 
               
          }
      }
-     onChangeUserUserName(e) {
-        this.setState({ UserName: e.target.value })
+     onChangeUseruserName(e) {
+        this.setState({ userName: e.target.value })
     }
 
-    onChangeUserEmail(e) {
-        this.setState({ email: e.target.value })
+    onChangeUseruserEmail(e) {
+        this.setState({ userEmail: e.target.value })
     }
 
-    onChangeUserPassword(e) {
-        this.setState({ password: e.target.value })
+    onChangeUseruserPassword(e) {
+        this.setState({ userPassword: e.target.value })
     }
     onSubmit(e) {
         e.preventDefault()
 
         const userObject = {
-            name: this.state.UserName,
-            email: this.state.email,
-            email: this.state.password,
+            name: this.state.userName,
+            email: this.state.userEmail,
+            email: this.state.usePrassword,
             
             
         };
 
-        axios.post('http://localhost:4000/users/create', userObject , this.setState({ isSignedUp: true }))
+        axios.post('http://localhost:3400/users/create', userObject )
             .then((res) => {
                 console.log(res.data);
+                if (res.status === 3400) {
+                    this.setState({ isSignedUp: true });
+                  }
                
             }).catch((error) => {
                 console.log(error)
             });
-        this.setState({ UserName: '', email: '', password:'' });
+        this.setState({ userName: '', userEmail: '', userPassword:'' });
        
 
         
@@ -80,15 +83,15 @@ class IndexContent extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Enter UserName</label>
-                        <input type="text" value={this.state.UserName} onChange={this.onChangeUserUserName} className="form-control" />
+                        <input type="text" value={this.state.userName} onChange={this.onChangeUseruserName} className="form-control" />
                     </div>
                     <div className="form-group">
                         <label>Enter Email</label>
-                        <input type="text" value={this.state.email} onChange={this.onChangeUserEmail} className="form-control" />
+                        <input type="text" value={this.state.userEmail} onChange={this.onChangeUseruserEmail} className="form-control" />
                     </div>
                     <div className="form-group">
                         <label>Enter Password</label>
-                        <input type="password" value={this.state.password} onChange={this.onChangeUserPassword} className="form-control" />
+                        <input type="password" value={this.state.userPassword} onChange={this.onChangeUseruserPassword} className="form-control" />
                     </div>
                     <div className="form-group">
                     
